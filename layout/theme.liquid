@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <title>{{ page_title }}</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="{{ page_description | escape }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  {{ content_for_header }}
+
+  {{ 'bootstrape.css'   | asset_url | stylesheet_tag }}
+  {{ 'font-awesome.css' | asset_url | stylesheet_tag }}
+  {{ 'slick.css'        | asset_url | stylesheet_tag }}
+  {{ 'slick-theme.css'  | asset_url | stylesheet_tag }}
+  {{ 'vendor.css'       | asset_url | stylesheet_tag }}
+  {{ 'application.css'  | asset_url | stylesheet_tag }}
+  
+</head>
+<body>
+  <main role="main">
+
+    {% section 'announcement-bar' %}
+    {% section 'header' %}
+    {% section 'slideshow' %}
+    {{ content_for_layout }}
+    
+    
+
+  </main>
+
+  {{ 'jquery.min.js'  | asset_url | script_tag }}
+  {{ 'bootstrape.js'  | asset_url | script_tag }}
+  {{ 'slick.min.js'   | asset_url | script_tag }}
+  {{ 'application.js' | asset_url | script_tag }}
+  
+</body>
+</html>

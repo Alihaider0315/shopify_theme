@@ -1,0 +1,90 @@
+<div class="slider">
+{% for block in section.blocks %}
+  <div class="slide">
+    <img src="{{block.settings.banner_image_picker | img_url:'master' }}"  class="d-block w-100">
+    <div class="container">
+    <div class="slider-intro d-flex align-items-start justify-content-center">
+      <h1 class="display-2 text-uppercase text-white">{{block.settings.banner_text}}</h1>
+      <p class="text-uppercase text-white">{{block.settings.banner_intro}}</p>
+    </div>
+  </div>
+  </div>
+ 
+  {% endfor %}
+
+
+</div> 
+
+<style>
+  .slider-intro {
+    position: absolute;
+    top: 45%;
+    flex-flow: column;
+    width: 100%;
+}
+
+.slider-intro h1 {
+  font-size: {{section.settings.font_size}}em;
+}
+
+.slider-intro p {
+  font-size: {{section.settings.intro_text}}px;
+}
+</style>  
+  {% schema %}
+  {
+    "name": "Slide Show",
+    "class": "slide_show",
+    "settings": [
+      {
+        "type": "range",
+        "label": "Font Size",
+        "id": "font_size",
+        "default": 6,
+        "min": 1,
+        "max": 12,
+        "step": 1,
+        "unit": "em"
+      },
+    {
+      "type": "range",
+      "label": "Intro Text",
+      "id": "intro_text",
+      "default": 18,
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    } 
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Banner Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "label" : "Banner Image",
+            "id": "banner_image_picker"
+          },
+          {
+            "type": "text",
+            "label" : "Banner Text",
+            "id": "banner_text"
+          },
+          {
+            "type": "text",
+            "label" : "Banner Intro",
+            "id": "banner_intro"
+          }
+
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Slider"
+      }
+    ]
+  }
+  {% endschema %}

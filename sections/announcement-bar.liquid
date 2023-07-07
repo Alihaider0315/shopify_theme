@@ -1,0 +1,71 @@
+{% if section.settings.announcement_active %}
+  <div class="container-fluid bg-dark p-3 text-white">
+    <div class="slider">
+      <div class="top-bar-slider text-center text-white fw-5">
+        {% for block in section.blocks %}
+
+        <div>
+          {{block.settings.annoucement-bar-text}}
+        </div>
+        
+      {% endfor %}
+      </div>
+   
+    </div>
+  </div>
+{% endif %}
+
+<style>
+  .bg-dark
+ {
+  background-color: {{section.settings.annoucement_bar_bg-color}} !important;
+}
+
+</style>
+
+{% schema %}
+{
+  "name": "Annoucement Bar",
+  "class": "annoucement-bar-slider",
+  "settings": [
+    {
+      "type": "color",
+      "id": "annoucement_bar_bg-color",
+      "default": "#000",
+      "label": "Background Color"
+    },
+    {
+      "type": "checkbox",
+      "label": "Show Announcement Bar",
+      "id": "announcement_active",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Annoucement Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "annoucement-bar-text",
+          "label": "Add Your Text",
+          "placeholder": "Free shipping on orders over $75. Free returns.",
+          "default": "Free shipping on orders over $75. Free returns."
+        },
+        {
+          "type": "url",
+          "id": "URL",
+          "label": "announcement-bar-link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Annoucement Bar Slider"
+    }
+  ]
+}
+{% endschema %}
+
